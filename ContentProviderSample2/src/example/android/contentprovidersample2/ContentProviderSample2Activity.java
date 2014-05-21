@@ -1,5 +1,7 @@
 package example.android.contentprovidersample2;
 
+
+//refer http://junkcode.aakaka.com/archives/720
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.provider.ContactsContract;
