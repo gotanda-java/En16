@@ -68,7 +68,7 @@ public class ContentProviderSample2Activity extends Activity {
 					Log.i(dispName + "コンタクトID", contactId);
 
 					// 表示バッファに入れる
-					output += dispName + "(" + contactId + ")";
+					output += "\n"+ dispName + "(" + contactId + ")";
 
 					// 電話番号
 					//
@@ -80,7 +80,7 @@ public class ContentProviderSample2Activity extends Activity {
 							ContactsContract.CommonDataKinds.Phone.CONTACT_ID
 									+ " = ?", new String[] { contactId }, null);
 
-					output += "\n電話番号 \n";
+					output += "電話番号 \n";
 
 					// 順番に表示
 					while (phoneCursor.moveToNext()) {
@@ -101,7 +101,7 @@ public class ContentProviderSample2Activity extends Activity {
 					// メールアドレス
 					//
 
-					output += "\nメアド \n";
+					output += "メアド \n";
 
 					// メールアドレス取り出し用のカーソルを用意
 					Cursor mailCursor = cr.query(
@@ -120,7 +120,7 @@ public class ContentProviderSample2Activity extends Activity {
 						// メールアドレス
 						Log.i(dispName + "のメアド", emailAddr);
 
-						setItems(output);
+
 					}
 
 					// カーソルクローズは忘れずに！
@@ -133,6 +133,7 @@ public class ContentProviderSample2Activity extends Activity {
 
 				// メインのカーソルも閉じる
 				cursor.close();
+				setItems(output);
 
 			} catch (Exception exp) {
 				exp.printStackTrace();
