@@ -82,7 +82,7 @@ public class ContentProviderSample2Activity extends Activity {
 							ContactsContract.CommonDataKinds.Phone.CONTACT_ID
 									+ " = ?", new String[] { contactId }, null);
 
-					output += "電話番号 \n";
+					output += "\n 電話番号 :";
 
 					// 順番に表示
 					while (phoneCursor.moveToNext()) {
@@ -103,7 +103,7 @@ public class ContentProviderSample2Activity extends Activity {
 					// メールアドレス
 					//
 
-					output += "メアド \n";
+					output += "メアド :";
 
 					// メールアドレス取り出し用のカーソルを用意
 					Cursor mailCursor = cr.query(
