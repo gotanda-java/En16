@@ -1,12 +1,11 @@
 //https://github.com/7799/ContentProviderSample2
 //refer http://junkcode.aakaka.com/archives/720
-
-//editit on githud
 package example.android.contentprovidersample2;
 
 
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.provider.CallLog;
 import android.provider.ContactsContract;
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -19,8 +18,8 @@ import android.widget.TextView;
 
 public class ContentProviderSample2Activity extends Activity {
 
-	// private ListView mListView; // ï¿½ï¿½ï¿½Xï¿½gï¿½rï¿½ï¿½ï¿½[
-	// private ArrayAdapter<String> mAdapter; // ï¿½ï¿½ï¿½Xï¿½gï¿½rï¿½ï¿½ï¿½[ï¿½pï¿½ÌƒAï¿½_ï¿½vï¿½^
+	// private ListView mListView; // ƒŠƒXƒgƒrƒ…[
+	// private ArrayAdapter<String> mAdapter; // ƒŠƒXƒgƒrƒ…[—p‚ÌƒAƒ_ƒvƒ^
 
 	TableLayout tablelayout = null;
 
@@ -31,90 +30,90 @@ public class ContentProviderSample2Activity extends Activity {
 
 		tablelayout = (TableLayout) findViewById(R.id.tl_tablelayout);
 
-		// ï¿½ï¿½ï¿½Ô’Pï¿½ï¿½ï¿½ÈƒAï¿½_ï¿½vï¿½^
+		// ˆê”Ô’Pƒ‚ÈƒAƒ_ƒvƒ^
 		// this.mAdapter = new ArrayAdapter<String>(this,
 		// android.R.layout.simple_list_item_1);
 
-		// ï¿½ï¿½ï¿½Xï¿½gï¿½rï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½
+		// ƒŠƒXƒgƒrƒ…[‚ğæ‚èo‚·
 		// this.mListView = (ListView)this.findViewById(R.id.listView1);
 
-		// ï¿½Aï¿½_ï¿½vï¿½^ï¿½[ï¿½ï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½
+		// ƒAƒ_ƒvƒ^[‚ğƒZƒbƒg‚·‚é
 		// this.mListView.setAdapter(this.mAdapter);
 
-		// ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½
+		// ƒ[ƒ‹ƒAƒhƒŒƒX‚ ‚é‚â‚Â‚¾‚¯æ‚èo‚·
 		//
 		ContentResolver cr = this.getContentResolver();
 
-		// SQLiteï¿½ÉƒAï¿½Nï¿½Zï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ÈŠï¿½ï¿½ï¿½ï¿½H
+		// SQLite‚ÉƒAƒNƒZƒX‚·‚é—l‚ÈŠ´‚¶H
 		Cursor cursor = cr.query(ContactsContract.Contacts.CONTENT_URI, null,
 				null, null, null);
 
-		// ï¿½\ï¿½ï¿½ï¿½pï¿½Ì“ï¿½ï¿½ê•¨
+		// •\¦—p‚Ì“ü‚ê•¨
 		String output = "";
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ä‚ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s
+		// ‰½‚©‚Æ‚ê‚Ä‚é‚Æ‚«‚¾‚¯Às
 		if (cursor.moveToFirst()) {
 
 			try {
 
-				// ï¿½ï¿½ï¿½×‚Ä‚Ì“dï¿½bï¿½ï¿½ï¿½É“oï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^
+				// ‚·‚×‚Ä‚Ì“d˜b’ ‚É“o˜^‚³‚ê‚Ä‚¢‚éƒf[ƒ^
 				while (cursor.moveToNext()) {
 
 
 
-					// ï¿½\ï¿½ï¿½ï¿½ï¿½
+					// •\¦–¼
 					String dispName = cursor
 							.getString(cursor
 									.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
 
-					// ï¿½Rï¿½ï¿½ï¿½^ï¿½Nï¿½gID
+					// ƒRƒ“ƒ^ƒNƒgID
 					String contactId = cursor.getString(cursor
 							.getColumnIndex(BaseColumns._ID));
-					Log.i(dispName + "ï¿½Rï¿½ï¿½ï¿½^ï¿½Nï¿½gID", contactId);
+					Log.i(dispName + "ƒRƒ“ƒ^ƒNƒgID", contactId);
 
-					// ï¿½\ï¿½ï¿½ï¿½oï¿½bï¿½tï¿½@ï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½
+					// •\¦ƒoƒbƒtƒ@‚É“ü‚ê‚é
 					output += "\n"+ dispName + "(" + contactId + ")";
 
-					// ï¿½dï¿½bï¿½Ôï¿½
+					// “d˜b”Ô†
 					//
 
-					// ï¿½dï¿½bï¿½Ôï¿½ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½pï¿½ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½
+					// “d˜b”Ô†æ‚èo‚µ—p‚ÌƒJ[ƒ\ƒ‹‚ğ—pˆÓ
 					Cursor phoneCursor = cr.query(
 							ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
 							null,
 							ContactsContract.CommonDataKinds.Phone.CONTACT_ID
 									+ " = ?", new String[] { contactId }, null);
 
-					output += "\n ï¿½dï¿½bï¿½Ôï¿½ :";
+					output += "\n “d˜b”Ô† :";
 
-					// ï¿½ï¿½ï¿½Ô‚É•\ï¿½ï¿½
+					// ‡”Ô‚É•\¦
 					while (phoneCursor.moveToNext()) {
 
-						// ï¿½dï¿½bï¿½Ôï¿½ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½
+						// “d˜b”Ô†æ‚èo‚·
 						String phoneNumber = phoneCursor
 								.getString(phoneCursor
 										.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DATA1));
 
 						output += " " + phoneNumber + "\n";
-						// ï¿½dï¿½bï¿½Ôï¿½
-						Log.i(dispName + "ï¿½Ì”Ôï¿½", phoneNumber);
+						// “d˜b”Ô†
+						Log.i(dispName + "‚Ì”Ô†", phoneNumber);
 					}
 
-					// ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½[ï¿½Yï¿½Í–Yï¿½ê‚¸ï¿½ÉI
+					// ƒJ[ƒ\ƒ‹ƒNƒ[ƒY‚Í–Y‚ê‚¸‚ÉI
 					phoneCursor.close();
 
-					// ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Aï¿½hï¿½ï¿½ï¿½X
+					// ƒ[ƒ‹ƒAƒhƒŒƒX
 					//
 
-					output += "ï¿½ï¿½ï¿½Aï¿½h :";
+					output += "ƒƒAƒh :";
 
-					// ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Aï¿½hï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½pï¿½ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½
+					// ƒ[ƒ‹ƒAƒhƒŒƒXæ‚èo‚µ—p‚ÌƒJ[ƒ\ƒ‹‚ğ—pˆÓ
 					Cursor mailCursor = cr.query(
 							ContactsContract.CommonDataKinds.Email.CONTENT_URI,
 							null,
 							ContactsContract.CommonDataKinds.Email.CONTACT_ID
 									+ " = ?", new String[] { contactId }, null);
-					// ï¿½ï¿½ï¿½Ô‚É•\ï¿½ï¿½
+					// ‡”Ô‚É•\¦
 					while (mailCursor.moveToNext()) {
 						String emailAddr = mailCursor
 								.getString(mailCursor
@@ -122,21 +121,32 @@ public class ContentProviderSample2Activity extends Activity {
 
 						output += " " + emailAddr + "\n";
 
-						// ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Aï¿½hï¿½ï¿½ï¿½X
-						Log.i(dispName + "ï¿½Ìƒï¿½ï¿½Aï¿½h", emailAddr);
+						// ƒ[ƒ‹ƒAƒhƒŒƒX
+						Log.i(dispName + "‚ÌƒƒAƒh", emailAddr);
 
 
 					}
 
-					// ï¿½Jï¿½[ï¿½\ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½[ï¿½Yï¿½Í–Yï¿½ê‚¸ï¿½ÉI
+					// ƒJ[ƒ\ƒ‹ƒNƒ[ƒY‚Í–Y‚ê‚¸‚ÉI
 					mailCursor.close();
 
-					// ï¿½ï¿½ï¿½Xï¿½gï¿½rï¿½ï¿½ï¿½[ï¿½É“oï¿½^
+					// ƒŠƒXƒgƒrƒ…[‚É“o˜^
 					// this.mAdapter.add(output);
 
 				}
 
-				// ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½ÌƒJï¿½[ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½
+				output += "\n"+"“d˜b—š—ğ"+"\n";
+				Cursor cur = getContentResolver().query(CallLog.Calls.CONTENT_URI,
+						null, null, null, null);
+
+				while(cur.moveToNext()){
+					String name = cur.getString(cur.getColumnIndex(CallLog.Calls.NUMBER));
+					output += name+"\n";
+				}
+
+
+
+				// ƒƒCƒ“‚ÌƒJ[ƒ\ƒ‹‚à•Â‚¶‚é
 				cursor.close();
 				setItems(output);
 
@@ -203,7 +213,7 @@ public class ContentProviderSample2Activity extends Activity {
 //				}
 //			} else {
 //				TextView message = new TextView(this);
-//				message.setText("ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½æ“¾ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½B");
+//				message.setText("ƒf[ƒ^‚ªæ“¾‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B");
 //				LinearLayout linearlayout = (LinearLayout) findViewById(R.id.ll_linearlayout);
 //				linearlayout.addView(message);
 //
