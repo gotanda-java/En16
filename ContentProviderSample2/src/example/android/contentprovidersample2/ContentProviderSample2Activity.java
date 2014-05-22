@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 public class ContentProviderSample2Activity extends Activity {
 
+	//コメント1行追加 by kurata 20140522
+
 	// private ListView mListView; // リストビュー
 	// private ArrayAdapter<String> mAdapter; // リストビュー用のアダプタ
 
